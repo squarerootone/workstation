@@ -1,0 +1,58 @@
+{
+    "name": "Pythonista",
+    // "image": "mcr.microsoft.com/devcontainers/universal:2", // update image to your own
+    // "image": "python:3.13.1-alpine3.21", // update image to your own
+    "image": "python:3.13.1-slim", // update image to your own
+    // "dockerFile": "Dockerfile",
+    "features": {
+      "ghcr.io/devcontainers/features/git:1": {}
+      // default for jetbrains gateway
+    //   "ghcr.io/devcontainers/features/sshd:1": {},
+  
+      // // for downloading models from gcs
+      // "ghcr.io/dhoeric/features/google-cloud-cli:1": {},
+  
+      // // for others
+      // "ghcr.io/devcontainers/features/docker:1": {},
+      // "ghcr.io/devcontainers/features/docker-compose:1": {},
+      // "ghcr.io/devcontainers/features/helm:1": {},
+      // "ghcr.io/devcontainers/features/kubectl:1": {},
+      // "ghcr.io/devcontainers/features/terraform:1": {},
+  
+      // for SonarLint
+      // "ghcr.io/devcontainers/features/java:1": {},
+      // "ghcr.io/devcontainers/features/node:1": {}      
+    },
+    // "postCreateCommand": "sudo chown -R 1000:1000 /workspaces",  // for root ownership
+    // "containerEnv": {
+    //   "GOOGLE_APPLICATION_CREDENTIALS": "~/.config/gcloud/application_default_credentials.json",
+    //   "UV_PUBLISH_USERNAME": "oauth2accesstoken",
+    // },
+    // "onCreateCommand": "./.devcontainer/install.sh",
+    // "postStartCommand": "./.devcontainer/startup.sh",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-vsliveshare.vsliveshare",
+          "ms-vscode.remote-repositories",
+          "GitHub.remotehub",
+          "GitHub.vscode-pull-request-github",
+          "GitHub.vscode-github-actions",
+          "GitHub.copilot",
+          "GitHub.copilot-chat",
+          "SonarSource.sonarlint-vscode",
+          // "mongodb.mongodb-vscode",
+          // "figma.figma-vscode-extensions",
+          "mhutchie.git-graph",
+          // "ms-toolsai.jupyter",
+          // "ms-python.python"
+        ]
+      }
+    }
+    // "secrets": {
+    //   "GH_SSH_KEY": {
+    //     "description": "Your SSH private key associated with your GH account",
+    //   }
+    // }
+    // "remoteUser": "root"
+  }
