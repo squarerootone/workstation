@@ -1,24 +1,8 @@
+Additional notes on ubuntu crd which might not be necessary
+```shell
 #!/bin/bash
 
-# Update system and install desktop manager
-sudo apt update && sudo apt upgrade -y
-# sudo apt install xfce4
-sudo apt install ubuntu-gnome-desktop -y
-# to figure out smaller package list, not the full gnome destop
-sudo dpkg-reconfigure gdm3
-
 ###############################
-# Install wget to download the deb package and install it
-sudo apt install wget
-wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
-sudo dpkg -i chrome-remote-desktop_current_amd64.deb
-sudo apt --fix-broken install
-
-###############################
-# Configure crd to run on gnome
-# echo "exec /usr/bin/xfce4-session" > ~/.chrome-remote-desktop-session
-echo "exec /usr/bin/gnome-session" > ~/.chrome-remote-desktop-session
-
 # check if service is masked by checking for sym link to /dev/null
 ls -l /usr/lib/systemd/system/chrome-remote-desktop.service
 sudo rm /usr/lib/systemd/system/chrome-remote-desktop.service
@@ -27,9 +11,6 @@ sudo rm /usr/lib/systemd/system/chrome-remote-desktop.service
 sudo nano /etc/gdm/custom.conf
 # uncomment this line WaylandEnable=false
 sudo systemctl restart gdm
-
-# [Sign in - Google Accounts](https://remotedesktop.google.com/headless)
-# Authorise and link the workstation to the account as per Set up via SSH section
 
 ###############################
 # start the service
@@ -60,3 +41,4 @@ sudo reboot
 # Starting systemd-networkd-wait-onl…ait for Network to be Configured...
 # [    **] Job systemd-networkd-wait-online.se…tart running (1min 42s / no limit)
 # %%
+```
