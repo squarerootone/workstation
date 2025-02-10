@@ -80,7 +80,7 @@ EOF
 install_desktop_environment() {
     local os_type=${1:-$OS_TYPE}
     local desktop_env=${2:-gnome}
-    local desktop_env_package = ""
+    local desktop_env_package=""
 
     # note that `groupinstall` seems to have been replaced by `group install`.
     # and if that doesn't work, we can go with the dnf install @[package] syntax instead
@@ -91,13 +91,13 @@ install_desktop_environment() {
             # note that there's some issue preventing the default ptyxis terminal from starting
             # however gnome-terminal works fine out of the box once installed
             # we're skipping the troubleshooting here just by installing it
-            if [ "$os_type" == "ubuntu" ]; then desktop_env_package = "ubuntu-gnome-desktop"
-            elif [ "$os_type" == "fedora" ]; then desktop_env_package = "@gnome-desktop gnome-terminal"
+            if [ "$os_type" == "ubuntu" ]; then desktop_env_package="ubuntu-gnome-desktop"
+            elif [ "$os_type" == "fedora" ]; then desktop_env_package="@gnome-desktop gnome-terminal"
             fi
             ;;
         xfce)
-            if [ "$os_type" == "ubuntu" ]; then desktop_env_package = "xfce4"
-            elif [ "$os_type" == "fedora" ]; then desktop_env_package = "@xfce-desktop"
+            if [ "$os_type" == "ubuntu" ]; then desktop_env_package="xfce4"
+            elif [ "$os_type" == "fedora" ]; then desktop_env_package="@xfce-desktop"
             fi
             ;;
         none)
@@ -111,8 +111,8 @@ install_desktop_environment() {
     esac
 
     echo "Installing desktop environment: $desktop_env"
-    install_apps --os "$os_type" --update $desktop_env_package
-    if [ "$os_type" == "ubuntu" && "$desktop_env" == "gnome" ]; then
+    install_apps --os "$os_type" --update "$desktop_env_package"
+    if [ "$os_type" == "ubuntu" ] && [ "$desktop_env" == "gnome" ]; then
         # TODO figure out how to install smaller package list instead of the full gnome destop
         sudo dpkg-reconfigure gdm3
     fi
